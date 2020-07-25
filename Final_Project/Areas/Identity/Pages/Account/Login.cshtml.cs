@@ -43,7 +43,7 @@ namespace Final_Project.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage = "El correo introducido no es una dirección de correo válida")]
             public string Email { get; set; }
 
             [Required]
