@@ -61,6 +61,8 @@ namespace Final_Project.Areas.Identity.Pages.Account
             [Display(Name = "Confirmar contraseña")]
             [Compare("Password", ErrorMessage = "Las contraseñas no coinciden.")]
             public string ConfirmPassword { get; set; }
+
+            public string Rol { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -79,6 +81,11 @@ namespace Final_Project.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    if (Input.Rol == "Administrador")
+                    {
+                        _userManager.AddToRoleAsync(user, "Administrador").Wait();
+                    }
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
