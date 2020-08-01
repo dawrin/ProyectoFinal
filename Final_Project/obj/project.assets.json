@@ -8947,19 +8947,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\villaverde\\.nuget\\packages\\": {}
+    "C:\\Users\\la-so\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\villaverde\\source\\repos\\Final_Project\\ProyectoFinal\\Final_Project\\Final_Project.csproj",
+      "projectUniqueName": "C:\\Users\\la-so\\Documents\\GitHub\\ProyectoFinal\\Final_Project\\Final_Project.csproj",
       "projectName": "Final_Project",
-      "projectPath": "C:\\Users\\villaverde\\source\\repos\\Final_Project\\ProyectoFinal\\Final_Project\\Final_Project.csproj",
-      "packagesPath": "C:\\Users\\villaverde\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\villaverde\\source\\repos\\Final_Project\\ProyectoFinal\\Final_Project\\obj\\",
+      "projectPath": "C:\\Users\\la-so\\Documents\\GitHub\\ProyectoFinal\\Final_Project\\Final_Project.csproj",
+      "packagesPath": "C:\\Users\\la-so\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\la-so\\Documents\\GitHub\\ProyectoFinal\\Final_Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\villaverde\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\la-so\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
