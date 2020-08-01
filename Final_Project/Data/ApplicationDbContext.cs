@@ -14,5 +14,6 @@ namespace Final_Project.Data
             : base(options)
         {
         }
+        public DbSet<Final_Project.Models.Roles> Roles { get; set; }
     }
 }
