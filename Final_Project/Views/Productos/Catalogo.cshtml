@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Final_Project.Models.DataProductos>
+
+@{
+    ViewData["Title"] = "Catalogo";
+}
+
+<h1>Catalogo</h1>
+
+
+
+    <!-- Material Design Lite -->
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-orange.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="~/css/Style.css" />
+
+
+
+
+<body style="overflow-x:hidden">
+
+    <table>
+        <tr >
+            <td>
+                @foreach (var item in Model)
+                {
+
+                    <div class="mdl-card mdl-shadow--2dp demo-card-square">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <img width="235px" height="230px" alt="250px" src="@Url.Action("RenderImage","Productos", new { id = item.Id})" />
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                Detalles
+                            </a>
+
+                        </div>
+                    </div>
+
+
+
+                }
+            </td>
+        </tr>
+    </table>
+</body>
+

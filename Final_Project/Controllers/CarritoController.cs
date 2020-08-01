@@ -5,35 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Final_Project.Data;
 using Final_Project.Models;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.AspNetCore.Identity;
 
 namespace Final_Project.Controllers
 {
-    public class ProductosController : Controller
+    public class CarritoController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly CarritoDbContex _context;
 
-        public ProductosController(ApplicationDbContext context)
+        public CarritoController(CarritoDbContex context)
         {
             _context = context;
         }
 
-
-        public async Task<IActionResult> Index(DataProductos dat)
+        // GET: Carrito
+        public async Task<IActionResult> Index()
         {
-            ViewData["Id"] = dat.Id;
-            return View(await _context.Productos.ToListAsync());
-        }
-        public async Task<IActionResult> Catalogo()
-        {
-            return View(await _context.Productos.ToListAsync());
+            return View(await _context.DATA.ToListAsync());
         }
 
-        // GET: Productos/Details/5
+        // GET: Carrito/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -41,7 +32,7 @@ namespace Final_Project.Controllers
                 return NotFound();
             }
 
-            var dataProductos = await _context.Productos
+            var dataProductos = await _context.DATA
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (dataProductos == null)
             {
@@ -51,44 +42,29 @@ namespace Final_Project.Controllers
             return View(dataProductos);
         }
 
-        // GET: Productos/Create
+        // GET: Carrito/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Productos/Create
+        // POST: Carrito/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Foto,Nombre,Descripcion,Cantidad,Estado,Categoria")] DataProductos datos)
+        public async Task<IActionResult> Create([Bind("Id,Foto,Nombre,Descripcion,Cantidad,Estado,Categoria")] DataProductos dataProductos)
         {
-            foreach (var file in Request.Form.Files)
+            if (ModelState.IsValid)
             {
-                MemoryStream ms = new MemoryStream();
-                file.CopyTo(ms);
-                datos.Foto = ms.ToArray();
-                ms.Close();
-                ms.Dispose();
-
-                _context.Add(datos);
-
+                _context.Add(dataProductos);
                 await _context.SaveChangesAsync();
-
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction("Index", "Productos");
+            return View(dataProductos);
         }
 
-        public async Task<ActionResult> RenderImage(int id)
-        {
-            DataProductos item = await _context.Productos.FindAsync(id);
-
-            byte[] photoBack = item.Foto;
-
-            return File(photoBack, "image/png");
-        }
-        // GET: Productos/Edit/5
+        // GET: Carrito/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,7 +72,7 @@ namespace Final_Project.Controllers
                 return NotFound();
             }
 
-            var dataProductos = await _context.Productos.FindAsync(id);
+            var dataProductos = await _context.DATA.FindAsync(id);
             if (dataProductos == null)
             {
                 return NotFound();
@@ -104,7 +80,7 @@ namespace Final_Project.Controllers
             return View(dataProductos);
         }
 
-        // POST: Productos/Edit/5
+        // POST: Carrito/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -139,7 +115,7 @@ namespace Final_Project.Controllers
             return View(dataProductos);
         }
 
-        // GET: Productos/Delete/5
+        // GET: Carrito/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -147,7 +123,7 @@ namespace Final_Project.Controllers
                 return NotFound();
             }
 
-            var dataProductos = await _context.Productos
+            var dataProductos = await _context.DATA
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (dataProductos == null)
             {
@@ -157,20 +133,20 @@ namespace Final_Project.Controllers
             return View(dataProductos);
         }
 
-        // POST: Productos/Delete/5
+        // POST: Carrito/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var dataProductos = await _context.Productos.FindAsync(id);
-            _context.Productos.Remove(dataProductos);
+            var dataProductos = await _context.DATA.FindAsync(id);
+            _context.DATA.Remove(dataProductos);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DataProductosExists(int id)
         {
-            return _context.Productos.Any(e => e.Id == id);
+            return _context.DATA.Any(e => e.Id == id);
         }
     }
 }

@@ -6,10 +6,11 @@
     <title>@ViewData["Title"] - Final_Project</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
     <style>
-        #slider{
-             
-            width:500px; height:500px;
+        #slider {
+            width: 500px;
+            height: 500px;
         }
     </style>
 </head>
@@ -31,6 +32,16 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Rol" asp-action="Agregar">Añadir Rol</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Create">Crear</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Catalogo">Catalago</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Carrito" asp-action="Index">Carrito</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>

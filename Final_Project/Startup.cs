@@ -12,6 +12,7 @@ using Final_Project.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Final_Project.Models;
 
 namespace Final_Project
 {
