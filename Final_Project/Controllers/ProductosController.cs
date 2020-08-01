@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Final_Project.Data;
 using Final_Project.Models;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Identity;
 
 namespace Final_Project.Controllers
 {
@@ -20,9 +22,10 @@ namespace Final_Project.Controllers
             _context = context;
         }
 
-        // GET: Productos
-        public async Task<IActionResult> Index()
+
+        public async Task<IActionResult> Index(DataProductos dat)
         {
+            ViewData["Id"] = dat.Id;
             return View(await _context.Productos.ToListAsync());
         }
         public async Task<IActionResult> Catalogo()

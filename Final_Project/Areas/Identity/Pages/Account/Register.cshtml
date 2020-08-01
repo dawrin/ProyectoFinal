@@ -23,6 +23,14 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <hr />
+            @if (User.IsInRole("Administrador")) { 
+            <div class="form-group">
+                <h4 class="alert-danger">¿Dar rol Administrador?</h4>
+                <p class="text-danger">Escriba Administrador para confirmar</p>
+                <input asp-for="Input.Rol" class="form-control" placeholder="Escriba Administrador para confirmar" />
+            </div>
+            }
             <button type="submit" class="btn btn-primary">Registrarse</button>
         </form>
     </div>
