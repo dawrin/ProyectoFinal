@@ -25,6 +25,10 @@ namespace Final_Project.Controllers
         {
             return View(await _context.Productos.ToListAsync());
         }
+        public async Task<IActionResult> Catalogo()
+        {
+            return View(await _context.Productos.ToListAsync());
+        }
 
         // GET: Productos/Details/5
         public async Task<IActionResult> Details(int? id)
