@@ -10,10 +10,12 @@ namespace Final_Project.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<DataProductos> Productos { get; set; }
+        public DbSet<OrdenesModel> Ordenes { get; set; }
+        //public DbSet<DataProductos> Ordenes1 { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
-        public DbSet<Final_Project.Models.Roles> Roles { get; set; }
+        public DbSet<Roles> Roles { get; set; }
     }
 }

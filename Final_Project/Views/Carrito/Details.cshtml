@@ -1,54 +1,89 @@
 ﻿@model Final_Project.Models.DataProductos
 
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h1>Details</h1>
-
 <div>
-    <h4>DataProductos</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cantidad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Categoria)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Categoria)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="row">
+    <div class="col-sm-10">
+        <form asp-controller="Ordenes" asp-action="Create">
+
+            <hr />
+            <div class="form-group">
+                <label asp-for="NombreCliente" class="control-label"></label>
+                <input asp-for="NombreCliente" class="form-control" placeholder="Introduzca su nombre" required />
+                <span asp-validation-for="NombreCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApellidoCliente" class="control-label"></label>
+                <input asp-for="ApellidoCliente" class="form-control" placeholder="Introduzca su/s Apellido/s" required />
+                <span asp-validation-for="ApellidoCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCliente" class="control-label"></label>
+                <input asp-for="FechaCliente" type="date" class="form-control" placeholder="Introduzca su fecha de Nacimiento" required />
+                <span asp-validation-for="FechaCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input asp-for="Telefono" class="form-control" placeholder="Introduzca su Numero de Teléfono" required />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Correo" class="control-label"></label>
+                <input asp-for="Correo" class="form-control" placeholder="Introduzca su Correo Electrónico" required />
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Direccion" class="control-label"></label>
+                <input asp-for="Direccion" class="form-control" placeholder="Introduzca La direccion de entrega" required />
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <hr />
+            <p class="alert-info">Solicitamos la Latitud y Longitud para mas precision al momento de entregar el artículo</p>
+            <div class="form-group">
+                <label asp-for="Latitud" class="control-label"></label>
+                <input asp-for="Latitud" class="form-control" placeholder="5.005" required />
+                <span asp-validation-for="Latitud" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Longitud" class="control-label"></label>
+                <input asp-for="Longitud" class="form-control" placeholder="8.62" required />
+                <span asp-validation-for="Longitud" class="text-danger"></span>
+            </div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                    <input type="hidden" asp-for="Nombre" />
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Descripcion)
+                    <input type="hidden" asp-for="Descripcion" />
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Categoria)
+                    <input type="hidden" asp-for="Categoria" />
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Precio)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Precio)
+                    <input type="hidden" asp-for="Precio" />
+                </dd>
+                <input type="hidden" asp-for="Estado" value="Pendiente" />
+
+            </dl>
+            <input class="btn btn-primary" type="submit" value="Confirmar Compra" />
+        </form>
+        </div>
+    </div>
+    </div>
+

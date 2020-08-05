@@ -28,9 +28,21 @@ namespace Final_Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<SliderDbContext>(options =>
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<OrdenesDbContext>(options =>
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection")));
+
+
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+
             services.AddDbContext<CarritoDbContex>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -66,7 +78,7 @@ namespace Final_Project
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Productos}/{action=Index}/{id?}");
+                    pattern: "{controller=Slider}/{action=Inicio}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

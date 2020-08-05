@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Final_Project.Models.DataProductos>
+
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <select class="form-control mr-sm-2" name="Buscar">
+                <option value="procesando">procesando</option>
+                <option value="Enviado">Enviado</option>
+                <option value="Completado">Completado</option>
+            </select>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+    </nav>
+    <hr />
+
+    <h4 class="text-info text-center alert-primary">Mi historial de Compra</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitud)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitud)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

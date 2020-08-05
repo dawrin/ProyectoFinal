@@ -1,0 +1,120 @@
+﻿@model Final_Project.Models.DataProductos
+
+
+<h4>Ubicación del pedidido</h4>
+<div id="map"></div>
+
+<script>
+
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=E4w28j8mOyjdyJn8Q2VI', {
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+        }).addTo(map);
+
+        L.marker([@Html.DisplayFor(modelItem => Model.Latitud), @Html.DisplayFor(modelItem => Model.Longitud)]).addTo(map)
+            .bindPopup('@Html.DisplayFor(modelItem => Model.NombreCliente)<br>@Html.DisplayFor(modelItem => Model.ApellidoCliente)')
+            .openPopup();
+
+
+</script>
+    @*<div>
+        <h4>DataProductos</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Foto)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Foto)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Cantidad)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Categoria)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Categoria)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Precio)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Precio)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NombreOrden)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NombreOrden)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NombreCliente)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NombreCliente)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ApellidoCliente)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ApellidoCliente)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Direccion)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Direccion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Correo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Correo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Telefono)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Telefono)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Latitud)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Latitud)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Longitud)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Longitud)
+            </dd>
+        </dl>
+    </div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>*@

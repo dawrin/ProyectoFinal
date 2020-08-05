@@ -19,8 +19,9 @@ namespace Final_Project.Controllers
         }
 
         // GET: Carrito
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(DataProductos data)
         {
+            @ViewData["Contadora"]= data.Precio;
             return View(await _context.DATA.ToListAsync());
         }
 
@@ -53,7 +54,7 @@ namespace Final_Project.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Foto,Nombre,Descripcion,Cantidad,Estado,Categoria")] DataProductos dataProductos)
+        public async Task<IActionResult> Create([Bind("Id,Foto,Nombre,Descripcion,Cantidad,Estado,Categoria,Precio")] DataProductos dataProductos)
         {
             if (ModelState.IsValid)
             {

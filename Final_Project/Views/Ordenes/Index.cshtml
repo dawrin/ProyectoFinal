@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Final_Project.Models.DataProductos>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descripcion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Categoria)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Precio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreCliente)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ApellidoCliente)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Direccion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Correo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefono)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Latitud)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Longitud)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApellidoCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Correo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Latitud)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Longitud)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><button class="btn btn-primary">Estado</button></a> 
+                        <a asp-action="Details" asp-route-id="@item.Id"><i class="large material-icons">add_location</i></a> 
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>

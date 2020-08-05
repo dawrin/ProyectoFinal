@@ -6,7 +6,6 @@
 
 <h1>Detalles del articulo</h1><br />
 <head>
-    <!-- Material Design Lite -->
     
     <link rel="stylesheet" href="~/css/Detalles.css" />
 </head>
@@ -15,12 +14,13 @@
     <form asp-controller="Carrito" asp-action="Create">
         <section class="container">
             <div v-if="products.length > 0">
+                <li />
                 <ul class="products">
                     <li class="row" v-for="(product, index) in products">
                         <div class="col left">
                             <div class="thumbnail">
                                 <a href="#">
-                                    <img src="@Url.Action("RenderImage","Productos", new { id = Model.Id})" />
+                                    <img src="@Url.Action("RenderImage", "Productos", new { id = Model.Id })" />
                                 </a>
                             </div>
                             <div class="detail">
@@ -39,13 +39,25 @@
                                     <input type="hidden" asp-for="Cantidad" class="form-control" />
                                     @Html.DisplayFor(model => model.Cantidad)
                                 </div>
+                            </div><br />
+                            <div class="price">
+                                <h6 class="white-text">Precio:</h6>
+                                <input type="hidden" asp-for="Precio" class="form-control" />
+                                <strong>@Html.DisplayFor(model => model.Precio) $</strong>
                             </div>
+                            <input type="hidden" asp-for="Estado" class="form-control" />
+                            <input type="hidden" asp-for="Categoria" class="form-control" />
+
+                        </div>
+                        @{if (User.Identity.IsAuthenticated)
+                            {
                             <div class="form-group">
                                 <div class="checkout">
                                     <button type="submit">Carrito</button>
                                 </div>
                             </div>
-
+                                }
+                            }
                         </div>
 
                     </li>

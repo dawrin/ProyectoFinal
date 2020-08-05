@@ -28,9 +28,16 @@ namespace Final_Project.Controllers
             ViewData["Id"] = dat.Id;
             return View(await _context.Productos.ToListAsync());
         }
-        public async Task<IActionResult> Catalogo()
+        public async Task<IActionResult> Catalogo(string searchString)
         {
-            return View(await _context.Productos.ToListAsync());
+            var movies = from m in _context.Productos select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Categoria.Contains(searchString));
+            }
+
+            return View(await movies.ToListAsync());
         }
 
         // GET: Productos/Details/5
@@ -62,7 +69,7 @@ namespace Final_Project.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Foto,Nombre,Descripcion,Cantidad,Estado,Categoria")] DataProductos datos)
+        public async Task<IActionResult> Create([Bind("Id,Foto,Nombre,Descripcion,Cantidad,Estado,Categoria,Precio")] DataProductos datos)
         {
             foreach (var file in Request.Form.Files)
             {
@@ -77,7 +84,7 @@ namespace Final_Project.Controllers
                 await _context.SaveChangesAsync();
 
             }
-            return RedirectToAction("Index", "Productos");
+            return RedirectToAction("Catalogo", "Productos");
         }
 
         public async Task<ActionResult> RenderImage(int id)

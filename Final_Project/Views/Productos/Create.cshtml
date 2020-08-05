@@ -1,54 +1,61 @@
 ﻿@model Final_Project.Models.DataProductos
 
-@{
-    ViewData["Title"] = "Create";
-}
 
-<h1>Create</h1>
+<h4 class="alert-info">Añadir nuevo producto</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Foto" class="control-label"></label>
-                <input asp-for="Foto" type="file" id="file1" name="file1" />
-                <span asp-validation-for="Foto" class="text-danger"></span>
-            </div>
+            
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupFileAddon01">Cargar</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file"  asp-for="Foto" name="file1"  class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required>
+                        <label class="custom-file-label" for="inputGroupFile01">Inserte una Foto</label>
+                    </div>
+                </div>
+            
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
+                <input asp-for="Nombre" class="form-control" required/>
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
+                <input asp-for="Descripcion" class="form-control" required/>
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Cantidad" class="control-label"></label>
-                <input asp-for="Cantidad" class="form-control" />
+                <input asp-for="Cantidad" class="form-control" required/>
                 <span asp-validation-for="Cantidad" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="hidden" asp-for="Estado" class="form-control" />           
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" required/>
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Estado" class="form-control" value="Pendiente" />
+            <div class="form-group">
+                <input type="hidden" asp-for="Estado" class="form-control" />
             </div>
             <div class="form-group">
                 <label asp-for="Categoria" class="control-label"></label><br />
                 @Html.DropDownListFor(m => m.Categoria,
                      new SelectList(Enum.GetValues(typeof(_categoria))),
-                     "Selecciona Categoría")
+                     "Selecciona Categoría", new { @class = "btn btn-secondary dropdown-toggle" })
 
                 <span asp-validation-for="Categoria" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Enviar" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Final_Project.Models.DataProductos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Sliders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img width="500px" src="@Url.Action("RenderImage","Slider", new { id = item.Id})" />
+            </td>         
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

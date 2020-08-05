@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Final_Project.Models.DataProductos>
+
+<link rel="stylesheet" href="~/css/Slider.css" />
+<script src="~/js/Jss.js"></script>
+<link rel="stylesheet" href="~/css/Inicio.css" />
+<script src="~/js/Inicio.js"></script>
+<div id="carousel">
+    <figure id="spinner">
+        @foreach (var item in Model)
+        {
+            <img width="200px" height="300px" src="@Url.Action("RenderImage","Slider", new { id = item.Id})" alt>
+        }
+    </figure>
+
+</div>
+<span style="float:left" class="ss-icon" onclick="galleryspin('-')">&lt;</span>
+<span style="float:right" class="ss-icon" onclick="galleryspin('')">&gt;</span>
+<hr />
+<div class="text-center">
+    <h1 class="alert-info">Bienvenido</h1>
+    <h4 class="text-info">Para Poder comprar inicia sesión</h4>
+</div>
+
+<body id="page-top" class="index" data-pinterest-extension-installed="cr1.3.4">
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Desarrolladores</h2>
+                    <h3 class="section-subheading text-muted">Instituto Tecnológico de las América.</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="glyphicon glyphicon-tree-conifer"></i>
+                    </span>
+                    <h4 class="service-heading">Dawrin Marte Mendez</h4>
+                    <p class="text-muted"><strong>Matricula:</strong>2018-5852 <br /> <a href="mailto:20185852@itla.edu.do">Correo Electrónico</a></p>
+
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="glyphicon glyphicon-heart"></i>
+                    </span>
+                    <h4 class="service-heading">Saddiel Montero Mora</h4>
+                    <p class="text-muted"><strong>Matricula:</strong>2018-5841 <br /> <a href="mailto:20185841@itla.edu.do">Correo Electrónico</a></p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="glyphicon glyphicon-tint"></i>
+                    </span>
+                    <h4 class="service-heading">Daniel Santana</h4>
+                    <p class="text-muted"><strong>Matricula:</strong>2018-6044 <br /> <a href="mailto:20185841@itla.edu.do">Correo Electrónico</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+
+
